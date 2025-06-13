@@ -1,0 +1,399 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load form_tags %}
+
+{% block title %}Teleipat Project{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <!-- Заголовок -->
+    <div class="text-center mb-5">
+        <img src="{% static 'img/avatar.png' %}" alt="Аватар" class="rounded-circle shadow"
+            style="width: 200px; height: 200px; object-fit: cover;">
+        <h1 class="mt-4 text-neon">Привет! Я Игорь Ипатов</h1>
+        <p class="lead">Бывший строитель → начинающий Python-разработчик → будущий создатель технологического будущего
+        </p>
+    </div>
+
+    <!-- Блоки "Обо мне" -->
+    {% comment %} Блок 1 {% endcomment %}
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6 animate-left">
+            <img src="{% static 'img/about1.png' %}" alt="Строительство" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6 animate-right">
+            <div class="card p-4">
+                <h2 class="text-info">🧱 Мой путь</h2>
+                <p>Много лет я работал на стройке. Строительство научило меня терпению, ответственности, командной
+                    работе и точности. Я прошёл путь от помощника до профессионала, и всё это время в глубине души хотел
+                    создать что-то масштабное и глобальное — не просто строить дома, а создавать будущее.</p>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} Блок 2 {% endcomment %}
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
+        <div class="col-md-6 animate-left">
+            <img src="{% static 'img/about2.png' %}" alt="Животные" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6 animate-right">
+            <div class="card p-4">
+                <h2 class="text-info">🐾 Мои ценности</h2>
+                <p>Я люблю животных — особенно котиков и собак. Мне близки доброта, забота и честность. Эти качества я
+                    стараюсь пронести и в свою работу, даже если это строчки кода.</p>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} Блок 3 {% endcomment %}
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6 animate-left">
+            <img src="{% static 'img/about3.png' %}" alt="Программирование" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6 animate-right">
+            <div class="card p-4">
+                <h2 class="text-info">💻 Почему программирование?</h2>
+                <p>Сегодня я изучаю <strong>Python, Django, HTML, CSS, JavaScript и Web3</strong>. Я создаю сайты,
+                    осваиваю блокчейн и ИИ. Цель — построить платформу, которая поможет объединить людей без границ и
+                    денег.</p>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} Блок 4 {% endcomment %}
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
+        <div class="col-md-6 animate-left">
+            <img src="{% static 'img/about4.png' %}" alt="Teleipat" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6 animate-right">
+            <div class="card p-4">
+                <h2 class="text-info">🌍 Моя миссия — Teleipat</h2>
+                <p>Мой проект <strong>Teleipat</strong> — это идея глобального распределения ресурсов через доверие и
+                    технологии. Без государств, без войны, без экономического рабства. Только человек, нейросвязь и
+                    общий разум.</p>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} Блок 5 {% endcomment %}
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6 animate-left">
+            <img src="{% static 'img/about5.png' %}" alt="Будущее" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6 animate-right">
+            <div class="card p-4">
+                <h2 class="text-info">🚀 Вперёд к мечте</h2>
+                <p>Я не просто учусь программированию. Я учусь менять мир. Мой путь только начинается, и я верю — я
+                    смогу построить новую реальность. Мир, в котором мы живём, будет справедливым, открытым и добрым.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- ВСТУПИТЕЛЬНЫЙ БЛОК (home.html) -->
+<div class="hero-block">
+    <img id="typewriter-image" src="/static/img/django.png" alt="Django logo" class="hero-image">
+    <div id="typewriter-text" class="hero-text"></div>
+</div>
+
+<!-- Кнопка "Заморозить" -->
+<div class="corner-freeze-button">
+    <div class="hex-wrapper">
+        <svg class="hex-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon points="50,0 93,25 93,75 50,100 7,75 7,25" />
+        </svg>
+        <button id="btn-freeze" class="chat-label"
+            style="background-image: url('/static/img/hex-icons/freeze.png');"></button>
+    </div>
+</div>
+
+<!-- Кнопка "Чат" -->
+<div class="corner-chat-button">
+    <div class="hex-wrapper">
+        <svg class="hex-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon points="50,0 93,25 93,75 50,100 7,75 7,25" />
+        </svg>
+        <button id="btn-chat" class="chat-label">Чат</button>
+    </div>
+</div>
+
+<!-- Модальное окно чата -->
+<div id="chat-modal" class="chat-modal">
+    <div class="chat-modal-content">
+        <span id="chat-close">&times;</span>
+        <div id="chat-container">Загрузка чата...</div>
+    </div>
+</div>
+<!-- РАЗДЕЛ НАВЫКИ -->
+<section id="skills">
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Мои навыки</h2>
+
+        <div class="row g-4">
+
+            <!-- Python -->
+            <div class="col-md-4">
+                <div class="card text-center skill-card" onclick="toggleTooltip(this)">
+                    <div class="card-body">
+                        <img src="{% static 'img/icons_web3/python.png' %}" alt="Python" class="skill-icon mb-3">
+                        <h5 class="card-title">Python</h5>
+                        <div class="skill-bar mb-2">
+                            <div class="skill-fill" style="--level: 30%"></div>
+                        </div>
+                        <p class="card-text">Уровень: 30%</p>
+                        <div class="hover-description"
+                            data-text="Язык общего назначения с простой синтаксисом, используется в веб, ИИ, скриптах, автоматизации и анализе данных.">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Django -->
+            <div class="col-md-4">
+                <div class="card text-center skill-card" onclick="toggleTooltip(this)">
+                    <div class="card-body">
+                        <img src="{% static 'img/icons_web3/django.png' %}" alt="Django" class="skill-icon mb-3">
+                        <h5 class="card-title">Django</h5>
+                        <div class="skill-bar mb-2">
+                            <div class="skill-fill" style="--level: 25%"></div>
+                        </div>
+                        <p class="card-text">Уровень: 25%</p>
+                        <div class="hover-description"
+                            data-text="Python-фреймворк для создания мощных и безопасных веб-приложений с встроенной админкой и ORM.">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HTML/CSS -->
+            <div class="col-md-4">
+                <div class="card text-center skill-card" onclick="toggleTooltip(this)">
+                    <div class="card-body">
+                        <img src="{% static 'img/icons_web3/htmlcss.png' %}" alt="HTML/CSS" class="skill-icon mb-3">
+                        <h5 class="card-title">HTML / CSS</h5>
+                        <div class="skill-bar mb-2">
+                            <div class="skill-fill" style="--level: 30%"></div>
+                        </div>
+                        <p class="card-text">Уровень: 30%</p>
+                        <div class="hover-description"
+                            data-text="Основы веб-разметки и оформления: HTML задаёт структуру, CSS — внешний вид и адаптивность.">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Git -->
+            <div class="col-md-4">
+                <div class="card text-center skill-card" onclick="toggleTooltip(this)">
+                    <div class="card-body">
+                        <img src="{% static 'img/icons_web3/git.png' %}" alt="Git" class="skill-icon mb-3">
+                        <h5 class="card-title">Git</h5>
+                        <div class="skill-bar mb-2">
+                            <div class="skill-fill" style="--level: 10%"></div>
+                        </div>
+                        <p class="card-text">Уровень: 10%</p>
+                        <div class="hover-description"
+                            data-text="Система контроля версий, позволяющая отслеживать изменения, работать в команде и откатывать ошибки.">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bootstrap -->
+            <div class="col-md-4">
+                <div class="card text-center skill-card" onclick="toggleTooltip(this)">
+                    <div class="card-body">
+                        <img src="{% static 'img/icons_web3/bootstrap.png' %}" alt="Bootstrap" class="skill-icon mb-3">
+                        <h5 class="card-title">Bootstrap</h5>
+                        <div class="skill-bar mb-2">
+                            <div class="skill-fill" style="--level: 20%"></div>
+                        </div>
+                        <p class="card-text">Уровень: 20%</p>
+                        <div class="hover-description"
+                            data-text="CSS-фреймворк с готовыми компонентами и сеткой, ускоряет создание адаптивных интерфейсов.">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web3 -->
+            <div class="col-md-4">
+                <div class="card text-center skill-card" onclick="toggleTooltip(this)">
+                    <div class="card-body">
+                        <img src="{% static 'img/icons_web3/web3.png' %}" alt="Web3" class="skill-icon mb-3">
+                        <h5 class="card-title">Web3</h5>
+                        <div class="skill-bar mb-2">
+                            <div class="skill-fill" style="--level: 10%"></div>
+                        </div>
+                        <p class="card-text">Уровень: 10%</p>
+                        <div class="hover-description"
+                            data-text="Совокупность технологий, обеспечивающих децентрализованный интернет через блокчейн, смарт-контракты и токены.">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- РАЗДЕЛ ПРОЕКТЫ -->
+<section id="projects">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Мои проекты</h1>
+        <div class="row">
+
+            <!-- Карточка 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Сайт-портфолио</h5>
+                        <p class="card-text">Персональный сайт с информацией обо мне, моими навыками и контактами.
+                            Сделан на Python с использование Django + Bootstrap
+                        </p>
+                        <a href="https://github.com/TeleipaT-dev/Portfolio_site" target="_blank"
+                            class="btn btn-primary mt-auto">Смотреть код на GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Чат с ИИ</h5>
+                        <p class="card-text">Чат с искусственным интеллектом, отвечающим на ваши вопросы в
+                            реальном времени.</p>
+                        <a href="/chat/" target="_blank" class="btn btn-primary mt-auto">Смотреть</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Проект будущего</h5>
+                        <p class="card-text">Долгосрочный проект: создание децентрализованной платформы распределения
+                            ресурсов без денег.</p>
+                        <a href="#" class="btn btn-secondary mt-auto disabled">В разработке</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- РАЗДЕЛ КОНТАКТЫ -->
+<section id="contacts">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Связаться со мной</h1>
+
+        {% if success %}
+        <div class="alert alert-success text-center">
+            Спасибо за сообщение! Я скоро свяжусь с вами.
+        </div>
+        {% endif %}
+
+        <form method="post" class="card shadow p-4 mx-auto" style="max-width: 600px;">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="{{ form.name.id_for_label }}" class="form-label">Имя</label>
+                {{ form.name|add_class:"form-control" }}
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+                {{ form.email|add_class:"form-control" }}
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.message.id_for_label }}" class="form-label">Сообщение</label>
+                {{ form.message|add_class:"form-control" }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+    </div>
+</section>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const btnChat = document.getElementById("btn-chat");
+        const chatModal = document.getElementById("chat-modal");
+        const chatClose = document.getElementById("chat-close");
+        const chatContainer = document.getElementById("chat-container");
+
+        function loadChat() {
+            fetch("/chat/")
+                .then(response => response.text())
+                .then(html => {
+                    const temp = document.createElement('div');
+                    temp.innerHTML = html;
+                    const content = temp.querySelector("[data-chat]");
+                    chatContainer.innerHTML = content ? content.outerHTML : html;
+                    setupChatHandlers();
+                });
+        }
+
+        function setupChatHandlers() {
+            const form = document.getElementById("chat-form");
+            const textarea = form.querySelector("textarea");
+            const chatBox = document.getElementById("chat-box");
+            const clearBtn = document.getElementById("clear-chat");
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                fetch("/chat/", {
+                    method: "POST",
+                    body: formData
+                })
+                    .then(response => response.text())
+                    .then(html => {
+                        const temp = document.createElement('div');
+                        temp.innerHTML = html;
+                        const newContent = temp.querySelector("[data-chat]");
+                        chatContainer.innerHTML = newContent ? newContent.outerHTML : html;
+                        setupChatHandlers();
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    });
+            });
+
+            textarea.addEventListener("keydown", function (e) {
+                if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    form.dispatchEvent(new Event('submit'));
+                }
+            });
+
+            clearBtn.addEventListener("click", function () {
+                fetch("/chat/clear/")
+                    .then(() => loadChat());
+            });
+        }
+
+        btnChat.addEventListener("click", function () {
+            chatModal.style.display = "flex";
+            loadChat();
+        });
+
+        const btnFreeze = document.getElementById("btn-freeze");
+        btnFreeze.addEventListener("click", function () {
+            freezeScreen();
+        });
+
+        chatClose.addEventListener("click", function () {
+            chatModal.style.display = "none";
+        });
+
+        window.addEventListener("click", function (e) {
+            if (e.target === chatModal) {
+                chatModal.style.display = "none";
+            }
+        });
+    });
+</script>
+{% endblock %}
