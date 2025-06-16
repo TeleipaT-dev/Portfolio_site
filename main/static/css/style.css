@@ -1,0 +1,680 @@
+/* === СТИЛИ КНОПОК === */
+.btn-primary {
+    background: linear-gradient(to right, #00f2fe, #4facfe);
+    border: none;
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 1);
+}
+
+/* === ФОРМЫ И КАРТОЧКИ === */
+.card,
+.chat-box,
+form {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+input,
+textarea {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border: 1px solid #00ffff;
+    border-radius: 6px;
+    padding: 10px;
+    width: 100%;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 0 0 8px #00ffff;
+}
+
+/* === НАВЫКИ === */
+.skill-bar {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    height: 12px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.skill-fill {
+    height: 100%;
+    width: var(--level);
+    background: linear-gradient(to right, #00f2fe, #4facfe);
+    border-radius: 50px;
+    position: relative;
+    animation: grow 1.5s ease forwards;
+}
+
+.skill-fill::after {
+    content: "";
+    width: 14px;
+    height: 14px;
+    background-color: #00ffff;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px #00ffff;
+}
+
+@keyframes grow {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: var(--level);
+    }
+}
+
+
+
+.card.skill-card .card-body {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    color: #fff;
+    text-shadow: 0 0 5px #000;
+}
+
+.skill-icon {
+    width: 64px;
+    height: auto;
+    filter: drop-shadow(0 0 4px #00ffff);
+}
+
+/* === АДАПТИВНЫЕ КНОПКИ НА ГЛАВНОЙ === */
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.nav-button {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 6px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+.nav-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+
+
+
+@media (max-width: 600px) {
+    .nav-button {
+        width: 60px;
+        height: 60px;
+        font-size: 10px;
+    }
+
+    .button-row {
+        gap: 12px;
+    }
+}
+
+/* Кнопка переключателя */
+.theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: white;
+}
+
+/* === ТЕМНАЯ ТЕМА ПО УМОЛЧАНИЮ === */
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #9102ff;
+    margin: 0;
+    padding: 0;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* === ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ === */
+.theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: rgb(159, 158, 158);
+    transition: color 0.3s ease;
+}
+
+/* === СВЕТЛАЯ ТЕМА === */
+body.light {
+    background: linear-gradient(180deg, #ffffff, #e6f0ff);
+    color: #111;
+}
+
+body.light h1,
+body.light h2,
+body.light h3 {
+    color: #333;
+    text-shadow: none;
+}
+
+body.light .theme-toggle {
+    color: #111;
+}
+
+body.light .card,
+body.light .chat-box,
+body.light form {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(100, 100, 255, 0.2);
+    color: #111;
+    box-shadow: 0 8px 25px rgba(100, 100, 255, 0.15), 0 0 15px rgba(170, 220, 255, 0.3);
+    backdrop-filter: blur(4px);
+}
+
+
+body.light input,
+body.light textarea {
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #111;
+    border: 1px solid #8ab4f8;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+body.light input:focus,
+body.light textarea:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 8px #4facfe, inset 0 0 3px #4facfe;
+}
+
+
+body.light .skill-bar {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.light .skill-fill {
+    background: linear-gradient(to right, #8ab4f8, #4facfe);
+}
+
+body.light .skill-fill::after {
+    background-color: #4facfe;
+    box-shadow: 0 0 10px #4facfe;
+}
+
+body.light .hex {
+    border-color: #8ab4f8;
+    opacity: 0.6;
+}
+
+/* Переход для плавной смены темы */
+.hex,
+.card,
+.chat-box,
+form,
+input,
+textarea {
+    transition: all 0.4s ease;
+}
+
+.corner-chat-button {
+    position: fixed;
+    right: 2vw;
+    bottom: 2vh;
+    z-index: 1000;
+}
+
+.hex-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+#btn-chat {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: url('/static/img/hex-icons/chat.png') no-repeat center/contain;
+    background-color: transparent;
+    border: none;
+    clip-path: polygon(50% 0%,
+            93% 25%,
+            93% 75%,
+            50% 100%,
+            7% 75%,
+            7% 25%);
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    padding-bottom: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+/* SVG рамка */
+.hex-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: red;
+    stroke-width: 3;
+    z-index: 1;
+    animation: pulse-border 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse-border {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+
+
+
+.typewriter-wrapper {
+    text-align: center;
+    margin-top: 60px;
+}
+
+#typewriter-text {
+    font-size: 1.8rem;
+    color: #48013d;
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #00ffff;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* Неоновая подсветка активного и при наведении */
+.navbar-nav .nav-link {
+    position: relative;
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #00f0ff;
+    /* неоновый голубой */
+    text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 15px #00f0ff;
+}
+
+.navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: #00f0ff;
+    box-shadow: 0 0 6px #00f0ff, 0 0 10px #00f0ff;
+}
+
+.chat-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-modal-content {
+    background-color: #121212;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 700px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    color: white;
+    box-shadow: 0 0 20px #00ffff66;
+}
+
+#chat-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff3333;
+    cursor: pointer;
+}
+
+#chat-close:hover {
+    color: white;
+}
+
+.tooltip-description {
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #00ffff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 14px;
+    display: none;
+    z-index: 999;
+    box-shadow: 0 0 12px #00ffff66;
+    white-space: pre-wrap;
+}
+
+.tooltip-description::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+}
+
+/* === ИНТЕРАКТИВНОСТЬ КАРТОЧЕК НАВЫКОВ === */
+.card.skill-card {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.card.skill-card:hover {
+    transform: scale(1.02);
+    border-color: rgba(255, 0, 0, 0.8);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+}
+
+.card.skill-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 0 5px rgb(255, 0, 234);
+}
+
+.hover-description {
+    color: rgb(6, 211, 243);
+    margin-top: 10px;
+    font-size: 14px;
+    min-height: 1em;
+    text-align: center;
+    white-space: pre-wrap;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 0.2s ease;
+}
+
+.hero-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    /* 50% экрана */
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-image {
+    max-height: 50vh;
+    max-width: 90vw;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.hero-text {
+    min-height: 50px;
+    font-size: 1.8rem;
+    color: #ff0055;
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+.hero-image {
+    max-height: 50vh;
+    max-width: 90vw;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 20px;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.hero-image.visible {
+    opacity: 1;
+}
+
+#screenshot-overlay canvas {
+    image-rendering: crisp-edges;
+}
+
+.shard {
+    position: absolute;
+    z-index: 9999;
+    pointer-events: none;
+    transition: transform 2.5s ease, opacity 2.5s ease;
+    transform-origin: center;
+    will-change: transform, opacity;
+}
+
+.corner-freeze-button {
+    position: fixed;
+    left: 2vw;
+    bottom: 2vh;
+    z-index: 1000;
+}
+
+#btn-freeze {
+    /* такие же стили как #btn-chat */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: url('/static/img/hex-icons/freeze.png') no-repeat center/contain;
+    background-color: transparent;
+    border: none;
+    clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    padding-bottom: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-image {
+    max-height: 50vh;
+    max-width: 90vw;
+    height: auto;
+    width: auto;
+    object-fit: cover;
+    margin-bottom: 20px;
+
+    clip-path: polygon(50% 0%,
+            93% 25%,
+            93% 75%,
+            50% 100%,
+            7% 75%,
+            7% 25%);
+
+    transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+    transform: scale(1.05);
+}
+
+
+/* === Секция "Обо мне" === */
+#about {
+    padding: 60px 20px;
+    background: linear-gradient(to bottom, #0b0f1a, #1b1f3a);
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.7;
+}
+
+#about h1 {
+    font-size: 2.5rem;
+    color: #00ffff;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+#about .container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#about section {
+    margin-bottom: 50px;
+    border-left: 4px solid #00ffff30;
+    padding-left: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+#about section:hover {
+    border-left: 4px solid #00ffff;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+#about h2 {
+    font-size: 1.6rem;
+    color: #00d2ff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 6px #00d2ff;
+}
+
+#about p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    color: #d1d1e0;
+}
+
+@media (max-width: 768px) {
+    #about h1 {
+        font-size: 2rem;
+    }
+
+    #about h2 {
+        font-size: 1.3rem;
+    }
+
+    #about p {
+        font-size: 1rem;
+    }
+}
+
+.animate-left,
+.animate-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 1s ease;
+}
+
+.animate-left {
+    transform: translateX(-100px);
+}
+
+.animate-visible {
+    opacity: 1;
+    transform: translateX(0);
+}

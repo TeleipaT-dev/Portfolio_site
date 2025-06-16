@@ -1,0 +1,70 @@
+body {
+    cursor: none;
+}
+
+input,
+textarea,
+button {
+    cursor: default;
+    /* вернуть стандартный указатель над формами */
+}
+
+
+.custom-cursor {
+    position: fixed;
+    /* всегда в одном месте */
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    /* круг */
+    background: rgba(0, 255, 255, 0.7);
+    /* цвет и прозрачность */
+    pointer-events: none;
+    /* не мешает кликам */
+    z-index: 9999;
+    /* поверх всего */
+    transition: transform 0.08s ease;
+    /* плавность */
+    transform: translate(-50%, -50%);
+    /* центрируем */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+    /* светящийся эффект */
+}
+
+.noise-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    opacity: 0.01;
+    pointer-events: none;
+}
+
+
+.cursor-trail {
+    position: fixed;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255, 0, 64, 0.4);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    animation: fadeOut 0.5s linear forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+}

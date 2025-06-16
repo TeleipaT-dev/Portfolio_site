@@ -1,0 +1,357 @@
+<!-- main/templates/base.html -->
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Моё портфолио{% endblock %}</title>
+
+    <!-- Стили -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hex-grid.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cursor.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="animated-bg"></div> <!-- Фон Web3 -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+
+
+
+            <!-- Кнопка для мобильного меню -->
+            <button class="navbar-toggler order-lg-1" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Меню  -->
+            <div class="collapse navbar-collapse order-lg-1 me-auto" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#about">Главная</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="#skills">Навыки</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Проекты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacts">Контакты</a></li>
+
+                    <button id="theme-toggle" class="btn nav-link" title="Переключить тему">🌙</button>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+
+    <!-- Контент страниц -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- Скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/cursor.js' %}"></script>
+    <script src="{% static 'js/hex-grid.js' %}"></script>
+    <script src="{% static 'js/noise-bg.js' %}"></script>
+
+    <!-- Скрипт переключателя темы -->
+    <script>
+        const toggleBtn = document.getElementById("theme-toggle");
+        const body = document.body;
+
+        if (localStorage.getItem("theme") === "light") {
+            body.classList.add("light");
+            toggleBtn.textContent = "🌞";
+        }
+
+        toggleBtn.addEventListener("click", () => {
+            body.classList.toggle("light");
+
+            if (body.classList.contains("light")) {
+                localStorage.setItem("theme", "light");
+                toggleBtn.textContent = "🌞";
+            } else {
+                localStorage.setItem("theme", "dark");
+                toggleBtn.textContent = "🌙";
+            }
+        });
+    </script>
+
+    <!-- Web3-анимация фона -->
+    <style>
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgb(255, 0, 76), transparent),
+                radial-gradient(circle at 70% 70%, #f0f, transparent),
+                radial-gradient(circle at 50% 50%, #00f, transparent);
+            background-size: 200% 200%;
+            animation: moveBg 20s ease-in-out infinite;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        html,
+        body {
+            height: 100%;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes moveBg {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+    </style>
+
+    <script>
+        const phrases = [
+            { text: 'Разрабатываю сайты на Django', img: '/static/img/django.png' },
+            { text: 'Создаю Web3-интерфейсы', img: '/static/img/web3.png' },
+            { text: 'Интегрирую ИИ в проекты', img: '/static/img/ai.png' },
+            { text: 'Люблю учиться и автоматизировать', img: '/static/img/learn.png' },
+        ];
+
+        let current = 0;
+        const textElem = document.getElementById("typewriter-text");
+        const imgElem = document.getElementById("typewriter-image");
+
+        function showPhrase(index) {
+            const { text, img } = phrases[index];
+            textElem.textContent = "";
+            imgElem.classList.remove("visible");
+
+            setTimeout(() => {
+                imgElem.src = img;
+                imgElem.classList.add("visible");
+                typeText(text, 0);
+            }, 1000);
+        }
+
+        function typeText(text, i) {
+            if (i < text.length) {
+                textElem.textContent += text.charAt(i);
+                setTimeout(() => typeText(text, i + 1), 50);
+            } else {
+                setTimeout(() => eraseText(text.length), 2500); // подержать перед стиранием
+            }
+        }
+
+        function eraseText(i) {
+            if (i > 0) {
+                textElem.textContent = textElem.textContent.slice(0, -1);
+                setTimeout(() => eraseText(i - 1), 30);
+            } else {
+                imgElem.classList.remove("visible"); // исчезновение картинки
+                setTimeout(() => {
+                    current = (current + 1) % phrases.length;
+                    showPhrase(current);
+                }, 1000); // подождать перед следующей
+            }
+        }
+
+        showPhrase(current);
+    </script>
+
+
+
+
+    <script>
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const tooltip = card.querySelector('.tooltip-description');
+
+                // Скрыть другие подсказки
+                document.querySelectorAll('.tooltip-description').forEach(t => {
+                    if (t !== tooltip) {
+                        t.style.display = 'none';
+                        t.textContent = '';
+                    }
+                });
+
+                if (tooltip.style.display === 'block') {
+                    tooltip.style.display = 'none';
+                    tooltip.textContent = '';
+                    return;
+                }
+
+                tooltip.style.display = 'block';
+                const fullText = tooltip.dataset.text;
+                tooltip.textContent = '';
+                let i = 0;
+
+                const typer = setInterval(() => {
+                    if (i < fullText.length) {
+                        tooltip.textContent += fullText.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typer);
+                    }
+                }, 25);
+            });
+        });
+
+        // Скрытие по клику вне
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.skill-card')) {
+                document.querySelectorAll('.tooltip-description').forEach(t => {
+                    t.style.display = 'none';
+                    t.textContent = '';
+                });
+            }
+        });
+    </script>
+    <script>
+        document.querySelectorAll('.skill-card').forEach(card => {
+            const hover = card.querySelector('.hover-description');
+            const fullText = hover.dataset.text;
+            let interval = null;
+
+            card.addEventListener('mouseenter', () => {
+                let i = 0;
+                hover.textContent = "";
+                clearInterval(interval);
+                interval = setInterval(() => {
+                    if (i < fullText.length) {
+                        hover.textContent += fullText.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(interval);
+                    }
+                }, 25);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                clearInterval(interval);
+                hover.textContent = "";
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script>
+        function freezeScreen() {
+            html2canvas(document.body, {
+                useCORS: true,
+                allowTaint: true,
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: window.innerWidth,
+                windowHeight: document.body.scrollHeight,
+                scale: 2
+            }).then(canvas => {
+
+                const overlay = document.createElement('div');
+                overlay.id = 'screenshot-overlay';
+                overlay.style.position = 'fixed';
+                overlay.style.top = 0;
+                overlay.style.left = 0;
+                overlay.style.width = '100vw';
+                overlay.style.height = '100vh';
+                overlay.style.zIndex = 9998;
+                overlay.style.overflow = 'hidden';
+                overlay.style.pointerEvents = 'none';
+                document.body.appendChild(overlay);
+                overlay.appendChild(canvas);
+                canvas.id = 'screen-capture';
+                canvas.style.position = 'absolute';
+                canvas.style.top = '0';
+                canvas.style.left = '0';
+                canvas.style.width = '100vw';
+                canvas.style.height = '100vh';
+                canvas.style.objectFit = 'cover';
+                canvas.style.zIndex = '9999';
+
+                canvas.style.width = '100%';
+                canvas.style.height = '100%';
+
+                // через 1 секунду — активируем разрушение
+                setTimeout(() => {
+                    const cols = 10;
+                    const rows = 6;
+                    const width = canvas.width / cols;
+                    const height = canvas.height / rows;
+                    const ctx = canvas.getContext('2d');
+
+                    const shards = [];
+
+                    for (let y = 0; y < rows; y++) {
+                        for (let x = 0; x < cols; x++) {
+                            const imageData = ctx.getImageData(x * width, y * height, width, height);
+                            const shardCanvas = document.createElement('canvas');
+                            shardCanvas.width = width;
+                            shardCanvas.height = height;
+                            const shardCtx = shardCanvas.getContext('2d');
+                            shardCtx.putImageData(imageData, 0, 0);
+
+                            const shard = document.createElement('div');
+                            shard.classList.add('shard');
+                            shard.style.left = `${(x * 100 / cols)}vw`;
+                            shard.style.top = `${(y * 100 / rows)}vh`;
+                            shard.appendChild(shardCanvas);
+
+                            overlay.appendChild(shard);
+                            shards.push(shard);
+                        }
+                    }
+
+                    canvas.remove(); // убираем целый скрин
+
+                    setTimeout(() => {
+                        shards.forEach(shard => {
+                            const rotate = Math.random() * 720 - 360; // крутится сильнее
+                            const translateX = (Math.random() - 0.5) * 300; // немного в стороны
+                            const translateY = window.innerHeight + Math.random() * 500 + 200;
+                            shard.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotate}deg) scale(0.8)`;
+                            shard.style.opacity = 0.4;
+                        });
+                    }, 100); // пауза перед началом крушения
+
+                    setTimeout(() => {
+                        overlay.remove();
+                    }, 1500); // полная очистка через 1.5 секунды
+
+
+                }, 1000); // через 1 секунду
+            });
+        }
+    </script>
+
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animate-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.animate-left, .animate-right').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+

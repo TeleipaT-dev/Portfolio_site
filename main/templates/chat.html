@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Чат{% endblock %}
+{% block content %}
+
+
+<div class="chat-content" data-chat>
+    <h2 class="text-center mb-4">Онлайн-чат</h2>
+
+    <div class="text-end mb-3">
+        <button id="clear-chat" class="btn btn-danger btn-sm">Очистить чат</button>
+    </div>
+
+    <form method="post" id="chat-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+    <hr>
+
+    <div class="chat-box" id="chat-box" style="max-height: 400px; overflow-y: auto;">
+        {% for message in messages %}
+        <div class="mb-2">
+            <strong>{{ message.name }}</strong>: {{ message.content }}<br>
+            <small class="text-muted">{{ message.timestamp|date:"d.m.Y H:i" }}</small>
+        </div>
+        {% empty %}
+        <p>Пока сообщений нет...</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
