@@ -1,0 +1,66 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Кибервайб</title>
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+            overflow: hidden;
+            color: #0ff;
+            font-family: 'Courier New', monospace;
+        }
+
+        .code-vibe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            animation: flicker 1.5s infinite;
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+        }
+
+        @keyframes flicker {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="code-vibe">> Вайбкодинг: Загрузка системы...</div>
+
+    <script>
+        // 🌐 подключим атмосферу с динамикой слов
+        const phrases = [
+            "Загрузка 'Растаман - Bakhtin'...",
+            "Инициализация: Guf feat. Баста — Гуф умер",
+            "Модули: Сплин — Гарри Поттер",
+            "Ветка: Каста — Контрольная Закупка",
+            "Бит идёт: MiyaGi & Эндшпиль — I Got Love",
+            "Текстуры города: Нигатив — Лавина",
+            "Ночь. Дождь. Неон. Паранойя.",
+            ">> Телепатический канал открыт",
+        ];
+
+        let index = 0;
+        const div = document.querySelector('.code-vibe');
+        setInterval(() => {
+            div.textContent = `> ${phrases[index % phrases.length]}`;
+            index++;
+        }, 4000);
+    </script>
+</body>
+
+</html>

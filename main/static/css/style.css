@@ -1,4 +1,90 @@
-/* === СТИЛИ КНОПОК === */
+/* === СТИЛЬ ПРИВЕТСТВИЯ === */
+.neon-title {
+    color: #00ffff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px #8400ff, 0 0 20px #5bed00;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+/* === Стиль первого приветствия === */
+.hero-subtext {
+    font-size: 1.2rem;
+    color: #12ff01;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #00ffff00;
+    animation: blink-caret 0.75s step-end infinite;
+    margin-bottom: 8px;
+}
+
+/* === стиль 1 блока с анимацией === */
+.hero-block {
+    display: flex;
+    /* Включаем flex-контейнер */
+    flex-direction: column;
+    /* Элементы идут сверху вниз */
+    align-items: center;
+    /* Центрируем по горизонтали */
+    justify-content: center;
+    /* Центрируем по вертикали */
+    min-height: 50vh;
+    /* Минимум 50% высоты экрана */
+    padding: 20px;
+    /* Отступы внутри */
+    text-align: center;
+    /* Выравнивание текста по центру */
+    position: relative;
+    /* Для z-index и наложений */
+    z-index: 1;
+    /* Поверх фоновых элементов */
+}
+
+.hero-image {
+    max-height: 50vh;
+    /* Не выше 50% экрана */
+    max-width: 90vw;
+    /* Не шире 90% экрана */
+    height: auto;
+    /* Автоматическая высота */
+    width: auto;
+    /* Автоматическая ширина */
+    object-fit: contain;
+    /* Вписывается внутрь контейнера */
+    margin-bottom: 20px;
+    /* Отступ снизу */
+    opacity: 0;
+    /* Изначально скрыта (прозрачна) */
+    transition: opacity 5s ease-in-out;
+    /* Плавное появление */
+}
+
+.hero-image.visible {
+    opacity: 1;
+}
+
+.hero-text {
+    min-height: 50px;
+    /* Чтобы блок не прыгал при печати */
+    font-size: 1.8rem;
+    /* Размер текста */
+    color: #00ff51;
+    /* Ярко-зелёный (можно поменять) */
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+    /* Красная неоновая тень */
+    white-space: nowrap;
+    /* Текст не переносится */
+    overflow: hidden;
+    /* Обрезаем, чтобы была машинка */
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
+    /* Имитация курсора */
+    animation: blink-caret 0.75s step-end infinite;
+    /* Мигающий курсор */
+}
+
+/* === Стили кнопок в проектах === */
 .btn-primary {
     background: linear-gradient(to right, #00f2fe, #4facfe);
     border: none;
@@ -490,53 +576,8 @@ textarea {
     transition: opacity 0.2s ease;
 }
 
-.hero-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 50vh;
-    /* 50% экрана */
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
 
-.hero-image {
-    max-height: 50vh;
-    max-width: 90vw;
-    height: auto;
-    width: auto;
-    object-fit: contain;
-    margin-bottom: 20px;
-}
 
-.hero-text {
-    min-height: 50px;
-    font-size: 1.8rem;
-    color: #ff0055;
-    text-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 2px solid rgba(255, 255, 255, 0.1);
-    animation: blink-caret 0.75s step-end infinite;
-}
-
-.hero-image {
-    max-height: 50vh;
-    max-width: 90vw;
-    height: auto;
-    width: auto;
-    object-fit: contain;
-    margin-bottom: 20px;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-}
-
-.hero-image.visible {
-    opacity: 1;
-}
 
 #screenshot-overlay canvas {
     image-rendering: crisp-edges;

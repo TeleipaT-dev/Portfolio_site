@@ -11,7 +11,7 @@ import json
 def query_openrouter(prompt):
     url = "https://openrouter.ai/api/v1/chat/completions"
     headers = {
-        "Authorization": "Bearer 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",
+        "Authorization": "Bearer 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",
         "Content-Type": "application/json",
     }
 
@@ -88,11 +88,7 @@ def home(request):
 def about(request):
     return render(request, "about.html")
 
-def projects(request):
-    return render(request, "projects.html")
 
-def skills(request):
-    return render(request, "skills.html")
 
 def contacts(request):
     success = False
@@ -132,23 +128,3 @@ def clear_chat(request):
     form = ChatForm()
     messages = Message.objects.order_by("timestamp")
     return render(request, "chat.html", {"form": form, "messages": messages})
-
-
-# ===== Проксирование YouTube (если используется) =====
-from django.http import HttpResponse
-from urllib.parse import unquote
-
-def youtube_proxy(request):
-    url = request.GET.get("url")
-    if not url:
-        return HttpResponse("❌ Укажи URL через ?url=", status=400)
-
-    try:
-        response = requests.get(unquote(url), headers={
-            "User-Agent": "Mozilla/5.0",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        }, timeout=10)
-
-        return HttpResponse(response.content, content_type=response.headers.get("Content-Type", "text/html"))
-    except requests.exceptions.RequestException:
-        return HttpResponse("⚠️ Ошибка при загрузке страницы", status=500)
