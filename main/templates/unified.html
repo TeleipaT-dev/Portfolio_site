@@ -6,8 +6,8 @@
 
 {% block content %}
 <section id="home">
-<div class="container mt-5 pt-5">
-    
+    <div class="container mt-5 pt-5">
+
         <!-- Заголовок -->
         <div class="text-center mb-5">
             <img src="{% static 'img/avatar.png' %}" alt="Аватар" class="rounded-circle shadow"
@@ -19,13 +19,10 @@
                 <div id="subtext-2" class="hero-subtext"></div>
                 <div id="subtext-3" class="hero-subtext"></div>
             </div>
-    </section>
+</section>
 </div>
 <!-- ВСТУПИТЕЛЬНЫЙ БЛОК  -->
-<div class="hero-block">
-    <img id="typewriter-image" src="/static/img/django.png" alt="Django logo" class="hero-image">
-    <div id="typewriter-text" class="hero-text"></div>
-</div>
+
 <!-- Блоки "Обо мне" -->
 {% comment %} Блок 1 {% endcomment %}
 <div class="row align-items-center mb-5">
@@ -147,7 +144,10 @@
 <section id="skills">
     <div class="container mt-5">
         <h2 class="text-center mb-4">Мои навыки</h2>
-
+        <div class="hero-block">
+            <img id="typewriter-image" src="/static/img/django.png" alt="Django logo" class="hero-image">
+            <div id="typewriter-text" class="hero-text"></div>
+        </div>
         <div class="row g-4">
 
             <!-- Python -->
