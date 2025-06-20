@@ -5,101 +5,102 @@
 {% block title %}Teleipat Project{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-
-    <!-- Заголовок -->
-    <div class="text-center mb-5">
-        <img src="{% static 'img/avatar.png' %}" alt="Аватар" class="rounded-circle shadow"
-            style="width: 200px; height: 200px; object-fit: cover;">
-            <h1 class="mt-4 neon-title">Привет</h1>    
-        <h1 class="mt-4 neon-title">Меня зовут Игорь aka TeleipaT</h1>
-        <div id="intro-subtext-container" class="mt-3">
-            <div id="subtext-1" class="hero-subtext"></div>
-            <div id="subtext-2" class="hero-subtext"></div>
-            <div id="subtext-3" class="hero-subtext"></div>
-        </div>
-
-    </div>
-    <!-- ВСТУПИТЕЛЬНЫЙ БЛОК  -->
-    <div class="hero-block">
-        <img id="typewriter-image" src="/static/img/django.png" alt="Django logo" class="hero-image">
-        <div id="typewriter-text" class="hero-text"></div>
-    </div>
-    <!-- Блоки "Обо мне" -->
-    {% comment %} Блок 1 {% endcomment %}
-    <div class="row align-items-center mb-5">
-        <div class="col-md-6 animate-left">
-            <img src="{% static 'img/about1.png' %}" alt="Строительство" class="img-fluid rounded shadow">
-        </div>
-        <div class="col-md-6 animate-right">
-            <div class="card p-4">
-                <h2 class="text-info">🧱 Мой путь</h2>
-                <p>Много лет я работал на стройке. Строительство научило меня терпению, ответственности, командной
-                    работе и точности. Я прошёл путь от помощника до профессионала, и всё это время в глубине души хотел
-                    создавать что-то масштабное и глобальное — не просто строить дома! Я хочу строить технологическое
-                    будущее</p>
+<section id="home">
+<div class="container mt-5 pt-5">
+    
+        <!-- Заголовок -->
+        <div class="text-center mb-5">
+            <img src="{% static 'img/avatar.png' %}" alt="Аватар" class="rounded-circle shadow"
+                style="width: 200px; height: 200px; object-fit: cover;">
+            <h1 class="mt-4 neon-title">Привет</h1>
+            <h1 class="mt-4 neon-title">Меня зовут Игорь aka TeleipaT</h1>
+            <div id="intro-subtext-container" class="mt-3">
+                <div id="subtext-1" class="hero-subtext"></div>
+                <div id="subtext-2" class="hero-subtext"></div>
+                <div id="subtext-3" class="hero-subtext"></div>
             </div>
+    </section>
+</div>
+<!-- ВСТУПИТЕЛЬНЫЙ БЛОК  -->
+<div class="hero-block">
+    <img id="typewriter-image" src="/static/img/django.png" alt="Django logo" class="hero-image">
+    <div id="typewriter-text" class="hero-text"></div>
+</div>
+<!-- Блоки "Обо мне" -->
+{% comment %} Блок 1 {% endcomment %}
+<div class="row align-items-center mb-5">
+    <div class="col-md-6 animate-left">
+        <img src="{% static 'img/about1.png' %}" alt="Строительство" class="img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6 animate-right">
+        <div class="card p-4">
+            <h2 class="text-info">🧱 Мой путь</h2>
+            <p>Много лет я работал на стройке. Строительство научило меня терпению, ответственности, командной
+                работе и точности. Я прошёл путь от помощника до профессионала, и всё это время в глубине души хотел
+                создавать что-то масштабное и глобальное — не просто строить дома! Я хочу строить технологическое
+                будущее</p>
         </div>
     </div>
+</div>
 
-    {% comment %} Блок 2 {% endcomment %}
-    <div class="row align-items-center mb-5 flex-md-row-reverse">
-        <div class="col-md-6 animate-left">
-            <img src="{% static 'img/about2.png' %}" alt="Животные" class="img-fluid rounded shadow">
-        </div>
-        <div class="col-md-6 animate-right">
-            <div class="card p-4">
-                <h2 class="text-info">🐾 Мои ценности</h2>
-                <p>Я люблю животных — особенно котиков и собак. Мне близки доброта, забота и честность. Эти качества я
-                    стараюсь пронести и в свою работу, даже если это строчки кода.</p>
-            </div>
+{% comment %} Блок 2 {% endcomment %}
+<div class="row align-items-center mb-5 flex-md-row-reverse">
+    <div class="col-md-6 animate-left">
+        <img src="{% static 'img/about2.png' %}" alt="Животные" class="img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6 animate-right">
+        <div class="card p-4">
+            <h2 class="text-info">🐾 Мои ценности</h2>
+            <p>Я люблю животных — особенно котиков и собак. Мне близки доброта, забота и честность. Эти качества я
+                стараюсь пронести и в свою работу, даже если это строчки кода.</p>
         </div>
     </div>
+</div>
 
-    {% comment %} Блок 3 {% endcomment %}
-    <div class="row align-items-center mb-5">
-        <div class="col-md-6 animate-left">
-            <img src="{% static 'img/about3.png' %}" alt="Программирование" class="img-fluid rounded shadow">
-        </div>
-        <div class="col-md-6 animate-right">
-            <div class="card p-4">
-                <h2 class="text-info">💻 Почему программирование?</h2>
-                <p>Сегодня я изучаю <strong>Python, Django, HTML, CSS, JavaScript и Web3</strong>. Я создаю сайты,
-                    осваиваю блокчейн и ИИ. Цель — построить платформу, которая поможет объединить людей без границ и
-                    денег.</p>
-            </div>
+{% comment %} Блок 3 {% endcomment %}
+<div class="row align-items-center mb-5">
+    <div class="col-md-6 animate-left">
+        <img src="{% static 'img/about3.png' %}" alt="Программирование" class="img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6 animate-right">
+        <div class="card p-4">
+            <h2 class="text-info">💻 Почему программирование?</h2>
+            <p>Сегодня я изучаю <strong>Python, Django, HTML, CSS, JavaScript и Web3</strong>. Я создаю сайты,
+                осваиваю блокчейн и ИИ. Цель — построить платформу, которая поможет объединить людей без границ и
+                денег.</p>
         </div>
     </div>
+</div>
 
-    {% comment %} Блок 4 {% endcomment %}
-    <div class="row align-items-center mb-5 flex-md-row-reverse">
-        <div class="col-md-6 animate-left">
-            <img src="{% static 'img/about4.png' %}" alt="Teleipat" class="img-fluid rounded shadow">
-        </div>
-        <div class="col-md-6 animate-right">
-            <div class="card p-4">
-                <h2 class="text-info">🌍 Моя миссия — Teleipat</h2>
-                <p>Мой проект <strong>Teleipat</strong> — это идея глобального распределения ресурсов через доверие и
-                    технологии. Без государств, без войны, без экономического рабства. Только человек, нейросвязь и
-                    общий разум.</p>
-            </div>
+{% comment %} Блок 4 {% endcomment %}
+<div class="row align-items-center mb-5 flex-md-row-reverse">
+    <div class="col-md-6 animate-left">
+        <img src="{% static 'img/about4.png' %}" alt="Teleipat" class="img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6 animate-right">
+        <div class="card p-4">
+            <h2 class="text-info">🌍 Моя миссия — Teleipat</h2>
+            <p>Мой проект <strong>Teleipat</strong> — это идея глобального распределения ресурсов через доверие и
+                технологии. Без государств, без войны, без экономического рабства. Только человек, нейросвязь и
+                общий разум.</p>
         </div>
     </div>
+</div>
 
-    {% comment %} Блок 5 {% endcomment %}
-    <div class="row align-items-center mb-5">
-        <div class="col-md-6 animate-left">
-            <img src="{% static 'img/about5.png' %}" alt="Будущее" class="img-fluid rounded shadow">
-        </div>
-        <div class="col-md-6 animate-right">
-            <div class="card p-4">
-                <h2 class="text-info">🚀 Вперёд к мечте</h2>
-                <p>Я не просто учусь программированию. Я учусь менять мир. Мой путь только начинается, и я верю — я
-                    смогу построить новую реальность. Мир, в котором мы живём, будет справедливым, открытым и добрым.
-                </p>
-            </div>
+{% comment %} Блок 5 {% endcomment %}
+<div class="row align-items-center mb-5">
+    <div class="col-md-6 animate-left">
+        <img src="{% static 'img/about5.png' %}" alt="Будущее" class="img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6 animate-right">
+        <div class="card p-4">
+            <h2 class="text-info">🚀 Вперёд к мечте</h2>
+            <p>Я не просто учусь программированию. Я учусь менять мир. Мой путь только начинается, и я верю — я
+                смогу построить новую реальность. Мир, в котором мы живём, будет справедливым, открытым и добрым.
+            </p>
         </div>
     </div>
+</div>
 
 </div>
 
@@ -160,7 +161,7 @@
                         </div>
                         <p class="card-text">Уровень: 30%</p>
                         <div class="hover-description"
-                            data-text="Язык общего назначения с простой синтаксисом, используется в веб, ИИ, скриптах, автоматизации и анализе данных.">
+                            data-text="Язык общего назначения с простым синтаксисом, используется в веб, ИИ, скриптах, автоматизации и анализе данных.">
                         </div>
                     </div>
                 </div>
@@ -177,7 +178,7 @@
                         </div>
                         <p class="card-text">Уровень: 25%</p>
                         <div class="hover-description"
-                            data-text="Python-фреймворк для создания мощных и безопасных веб-приложений с встроенной админкой и ORM.">
+                            data-text="Фреймворк для создания мощных и безопасных веб-приложений с встроенной административной панелью и ORM.">
                         </div>
                     </div>
                 </div>

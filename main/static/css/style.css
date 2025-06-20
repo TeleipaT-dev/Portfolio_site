@@ -1,3 +1,4 @@
+
 /* === СТИЛЬ ПРИВЕТСТВИЯ === */
 .neon-title {
     color: #00ffff;
@@ -115,7 +116,7 @@ form {
 input,
 textarea {
     background-color: rgba(0, 0, 0, 0.2);
-    color: #fff;
+    color: #f80101;
     border: 1px solid #00ffff;
     border-radius: 6px;
     padding: 10px;
@@ -281,7 +282,7 @@ body {
 
 /* === СВЕТЛАЯ ТЕМА === */
 body.light {
-    background: linear-gradient(180deg, #ffffff, #e6f0ff);
+    background: linear-gradient(180deg, #c7e80c, #e6f0ff);
     color: #111;
 }
 

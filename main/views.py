@@ -90,8 +90,10 @@ def about(request):
 
 
 
-def contacts(request):
+
+def unified(request):
     success = False
+
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -105,21 +107,8 @@ def contacts(request):
     else:
         form = ContactForm()
 
-    return render(request, "contacts.html", {"form": form, "success": success})
-
-
-def unified(request):
-    form = ContactForm()
-    success = False
-
-    if request.method == "POST":
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            success = True
-            form = ContactForm()
-
     return render(request, "unified.html", {"form": form, "success": success})
+
 
 
 # ===== Очистка чата =====
